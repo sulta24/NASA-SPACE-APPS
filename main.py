@@ -1,7 +1,8 @@
 import pygame
 import sys
 import os
-
+from Gamesprite import GameSprite
+from motion import actual_motion
 # Initialize Pygame
 pygame.init()
 
@@ -16,19 +17,24 @@ pygame.display.set_caption("Visualize")
 
 
 
+test_sprite = GameSprite(screen, 'Num1.jpeg', 200, 100, 80, 115)
 
-
-
-fps = 10
+fps = 60
 clock = pygame.time.Clock()
 
 
 running = True
 while running:
+    clock.tick(fps)
+
     # Handle events
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
+
+    actual_motion(test_sprite, event, width, height)
+    screen.fill((0, 0, 0))
+    test_sprite.reset()
 
 
 
@@ -36,7 +42,6 @@ while running:
 
     # Update the display
     pygame.display.flip()
-    clock.tick(fps)
 
 
 # Quit Pygame
