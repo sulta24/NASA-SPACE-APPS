@@ -17,6 +17,8 @@ class GameSprite(pygame.sprite.Sprite):
         self.rect.x = player_x
         self.rect.y = player_y
         self.screen = screen
+        self.size_x = size_x
+        self.size_y = size_y
 
     # метод, отрисовывающий героя на окне
     def reset(self):
